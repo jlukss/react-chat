@@ -76,7 +76,7 @@ class App extends React.Component {
     if (!this.state.flash) {
       this.setState({
         nickname: '',
-        flash: err
+        flash: 'Lost connection to server'
       });
     } else {
       this.setState({
