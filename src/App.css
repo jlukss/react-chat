@@ -1,22 +1,82 @@
-.App {
-  text-align: center;
+body {
+  background-color: #3A3945;
+  font-family: 'Roboto', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
+.flash {
+  color: #f44336;
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin: 20px 20vw;
+  padding: 20px 30px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.login {
+  width: 20vw;
+  height: auto;
+  margin: 30vh auto;
+  background-color: #ffffff;
+  padding: 20px 30px;
+  border-radius: 5px;
 }
 
-.App-link {
-  color: #09d3ac;
+.chat .messages {
+  height: calc(100vh - 60px);
+  overflow: auto;
+}
+
+.chat .messages .message,
+.chat .messages .event {
+  padding: 0 20px;
+  margin-top: 10px;
+  color: #ccc;
+  font-size: 10pt;
+}
+.chat .messages .event {
+  color: #e09931;
+}
+
+.chat .send {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 20px;
+  margin: 0;
+  background-color: #ffffff;
+  padding: 20px 30px;
+}
+
+.form .field {
+  margin-bottom: 1em;
+}
+
+.form .field label {
+  display: block;
+}
+
+.form .field input {
+  width: 90%;
+  border: 0 solid #989ca2;
+  border-width: 0 0 1px 0; 
+  line-height: 2em;
+  outline: none;
+}
+
+.form button {
+  background-color: #989ca2;
+  color: #ffffff;
+  border-width: 0;
+  border-radius: 5px;
+  font-size: 13pt;
+  line-height: 2em;
+  font-weight: normal;
+  padding: 0 20px;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.form button:disabled {
+  cursor: default;
+  color: #ccc;
 }
