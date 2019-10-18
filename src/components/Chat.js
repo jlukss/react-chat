@@ -12,6 +12,7 @@ class Chat extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
     }
 
     componentDidUpdate() {
@@ -25,6 +26,10 @@ class Chat extends Component {
         });
     }
 
+    handleLogout() {
+        this.props.disconnect();
+    }
+
     handleClick(event) {
         event.preventDefault();
 
@@ -35,7 +40,8 @@ class Chat extends Component {
         this.props.sendMessage(this.state.message, (result) => {
             if (result !== false) {
                 this.setState({
-                    message: ''
+                    message: '',
+                    sending: false
                 })
             }
         });
@@ -56,8 +62,9 @@ class Chat extends Component {
                     <form onSubmit={this.handleClick}>
                         <div className="field">
                             <label htmlFor="message">{nickname}:</label>
-                            <input onChange={this.handleChange} id="message" type="text" value={this.state.message}></input>
-                            <button type="submit">Send</button>
+                            <input onChange={this.handleChange} disabled={this.state.sending} id="message" type="text" value={this.state.message}></input>
+                            <button type="submit" disabled={this.state.sending}>Send</button>
+                            <button onClick={this.handleLogout} type="button">Disconnect</button>
                         </div>
                     </form>
                 </div>

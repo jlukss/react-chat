@@ -20,6 +20,7 @@ class App extends React.Component {
     super(props);
 
     this.connect = this.connect.bind(this);
+    this.disconnect = this.disconnect.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
   }
 
@@ -108,6 +109,17 @@ class App extends React.Component {
     this.setupSocketListeners();
   }
 
+  disconnect() {
+    console.log('Leaving chat');
+
+    this.socket.close();
+
+    this.setState({
+      nickname: '',
+      flash: 'You left the chat'
+    });
+  }
+
   render() {
     const { nickname, flash } =  this.state;
     let flashMessage = '';
@@ -120,7 +132,7 @@ class App extends React.Component {
       return (
         <div className="App">
           {flashMessage}
-          <Chat nickname={nickname} messages={this.state.messages} sendMessage={this.sendMessage}></Chat>
+          <Chat nickname={nickname} messages={this.state.messages} sendMessage={this.sendMessage} disconnect={this.disconnect}></Chat>
         </div>
       );
     }

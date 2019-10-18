@@ -21,7 +21,7 @@ body {
 }
 
 .chat .messages {
-  height: calc(100vh - 60px);
+  height: calc(100vh - 75px);
   overflow: auto;
 }
 
@@ -41,10 +41,22 @@ body {
   position: fixed;
   bottom: 0;
   left: 0;
-  height: 20px;
+  height: 35px;
   margin: 0;
   background-color: #ffffff;
   padding: 20px 30px;
+}
+.chat .send button {
+  margin-left: 10px;
+}
+
+.chat .send .field input {
+  width: 50%;
+  border: 0 solid #989ca2;
+  border-width: 0 0 1px 0; 
+  line-height: 2em;
+  outline: none;
+  margin-left: 10px;
 }
 
 .form .field {
@@ -63,7 +75,7 @@ body {
   outline: none;
 }
 
-.form button {
+button {
   background-color: #989ca2;
   color: #ffffff;
   border-width: 0;
