@@ -46,10 +46,11 @@ class App extends React.Component {
     this.socket.on('disconnect', this.onDisconnected.bind(this));
     this.socket.on('message', this.onMessage.bind(this));
     this.socket.on('chat event', this.onEvent.bind(this));
+    this.socket.on('reason', this.onReason.bind(this));
   }
 
   onError(err) {
-    console.log(err);
+    console.error(err);
     this.setState({
       flash: err,
       requestedNickname: ''
@@ -57,19 +58,31 @@ class App extends React.Component {
   }
 
   onConnectError(err) {
-    console.log(err);
+    console.error(err);
     this.setState({
       flash: 'Server not available',
       requestedNickname: ''
     });
   }
 
+  onReason(message) {
+    this.setState({
+      flash: message
+    });
+  }
+
   onDisconnected(err) {
     console.log(err);
-    this.setState({
-      nickname: '',
-      flash: err
-    });
+    if (!this.state.flash) {
+      this.setState({
+        nickname: '',
+        flash: err
+      });
+    } else {
+      this.setState({
+        nickname: ''
+      });
+    }
   }
 
   onConnected() {
